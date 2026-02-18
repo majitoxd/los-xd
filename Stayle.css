@@ -1,0 +1,36 @@
+/* Fondo suave */
+body {
+    background-color: #f4f6f9;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Tarjeta principal */
+.card {
+    border-radius: 12px;
+    border: none;
+}
+
+/* Inputs */
+.form-control {
+    border-radius: 6px;
+    border: 1px solid #ced4da;
+    transition: 0.3s ease;
+}
+
+/* Efecto al seleccionar */
+.form-control:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 4px rgba(13, 110, 253, 0.3);
+}
+
+/* Botón */
+.btn-primary {
+    border-radius: 6px;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+/* Efecto botón */
+.btn-primary:hover {
+    transform: scale(1.02);
+}
