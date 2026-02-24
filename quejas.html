@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Queja - Tienda six seven</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        h2 {
+            color: #333;
+        }
+        input, select, textarea {
+            width: 300px;
+            padding: 5px;
+            margin-top: 5px;
+        }
+        textarea {
+            width: 400px;
+        }
+        .resultado {
+            background-color: #f4f4f4;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Formulario de Queja - Tienda six seven</h2>
+
+<div id="resultado"></div>
+
+<form id="formQueja">
+
+<h3>Datos del Cliente</h3>
+
+Nombre completo:<br>
+<input type="text" name="nombre" required><br><br>
+
+Cédula de identidad:<br>
+<input type="text" name="cedula" required><br><br>
+
+Dirección:<br>
+<input type="text" name="direccion" required><br><br>
+
+Teléfono:<br>
+<input type="text" name="telefono" required><br><br>
+
+Correo electrónico:<br>
+<input type="email" name="correo" required><br><br>
+
+<h3>Información de la Compra</h3>
+
+Número de factura:<br>
+<input type="text" name="factura" required><br><br>
+
+Fecha de compra:<br>
+<input type="date" name="fecha_compra" required><br><br>
+
+Lugar de compra:<br>
+<select name="lugar">
+    <option>Tienda Física</option>
+</select><br><br>
+
+<h3>Detalles del Producto</h3>
+
+Nombre del artículo:<br>
+<input type="text" name="articulo" required><br><br>
+
+Referencia:<br>
+<input type="text" name="referencia"><br><br>
+
+Talla:<br>
+<input type="text" name="talla"><br><br>
+
+Color:<br>
+<input type="text" name="color"><br><br>
+
+Motivo de la queja:<br>
+<select name="motivo">
+    <option>Producto defectuoso</option>
+    <option>Talla incorrecta</option>
+    <option>Error en envío</option>
+</select><br><br>
+
+<h3>Descripción</h3>
+<textarea name="descripcion" rows="5" required></textarea><br><br>
+
+<h3>Solución Solicitada</h3>
+<select name="solucion">
+    <option>Reembolso</option>
+    <option>Cambio de prenda</option>
+    <option>Reparación</option>
+    <option>Crédito en tienda</option>
+</select><br><br>
+
+<button type="submit">Enviar Queja</button>
+
+</form>
+
+<script>
+document.getElementById("formQueja").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const formData = new FormData(this);
+    let resultadoHTML = `
+        <div class="resultado">
+        <h3>Queja enviada correctamente</h3>
+        <h4>Datos del Cliente:</h4>
+        Nombre: ${formData.get("nombre")}<br>
+        Cédula: ${formData.get("cedula")}<br>
+        Dirección: ${formData.get("direccion")}<br>
+        Teléfono: ${formData.get("telefono")}<br>
+        Correo: ${formData.get("correo")}<br>
+
+        <h4>Información de la Compra:</h4>
+        Número de factura: ${formData.get("factura")}<br>
+        Fecha de compra: ${formData.get("fecha_compra")}<br>
+        Lugar de compra: ${formData.get("lugar")}<br>
+
+        <h4>Detalles del Producto:</h4>
+        Nombre del artículo: ${formData.get("articulo")}<br>
+        Referencia: ${formData.get("referencia")}<br>
+        Talla: ${formData.get("talla")}<br>
+        Color: ${formData.get("color")}<br>
+        Motivo de la queja: ${formData.get("motivo")}<br>
+
+        <h4>Descripción de los Hechos:</h4>
+        ${formData.get("descripcion")}<br>
+
+        <h4>Solución Solicitada:</h4>
+        ${formData.get("solucion")}<br>
+
+        <h4>Fecha de la Queja:</h4>
+        ${new Date().toLocaleDateString()}
+        </div>
+    `;
+
+    document.getElementById("resultado").innerHTML = resultadoHTML;
+    this.reset();
+});
+</script>
+
+</body>
+</html>
